@@ -13,8 +13,8 @@ headers to get you started.
 </p>
 <p><em>Note: You can also use a CSV export from Pivotal Tracker.</em></p>
 <%= form_tag import_upload_project_stories_path(@project), :multipart => true %>
-  <%= file_field_tag :csv %>
-  <%= submit_tag :import %>
+  <%= file_field_tag :csv %><br/><br/>
+  <%= submit_tag "Import Project" %> or <%= link_to 'cancel', project_path(@project)%>
 </form>
 
 <% if @stories %>

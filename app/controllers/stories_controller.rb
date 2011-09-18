@@ -119,10 +119,11 @@ class StoriesController < ApplicationController
             :state => row["Current State"],
             :title => row["Story"],
             :story_type => row["Story Type"],
-            :requested_by => users.detect {|u| u.name == row["Requested By"]},
-            :owned_by => users.detect {|u| u.name == row["Owned By"]},
+            :requested_by => users.detect {|u| u.name.downcase == row["Requested By"].downcase},
+            :owned_by => users.detect {|u| u.name.downcase == row["Owned By"].downcase},
             :accepted_at => row["Accepted at"],
-            :estimate => row["Estimate"]
+            :estimate => row["Estimate"],
+            :description => row["Description"]
           }
         end
         @stories = @project.stories.create(stories)
