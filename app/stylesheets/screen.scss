@@ -122,6 +122,42 @@ ul#primary-nav li.secondary ul li {
   padding: 10px 1em;
 }
 
+#title_bar span{
+  margin-left: 55px;
+}
+
+#title_bar li.stories{
+  display:inline;
+  float:left;
+  position:absolute;
+}
+
+#title_bar li.stories ul{
+  visibility:hidden;
+  padding-left:10px;
+  background-color:#FFFFFF;  
+}
+
+#title_bar li.stories ul a{
+  text-decoration: none;
+}
+
+#title_bar li.stories:hover ul{
+  visibility:visible;
+}
+
+#title_bar li.stories:hover span{
+  visibility:visible;
+}
+
+#title_bar li.stories span{
+  visibility:hidden;
+  background-color:#FFFFFF;
+  position:absolute;
+  min-width:100px;
+  margin-left:0px;
+}
+
 #title_bar h1 {
   font-size: 2em;
   margin: 0.3em 0;
@@ -160,6 +196,10 @@ table.stories th {
   padding: 0.2em;
   font-weight: bold;
   @include border-radius(5px 5px 0 0);
+}
+
+table.stories th span{
+  float: right;
 }
 
 /* Story types */

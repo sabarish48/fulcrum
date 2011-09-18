@@ -1,7 +1,12 @@
 <h1><%= project.name %></h1>
 
-<%= link_to_unless_current 'Stories', project_path(project) %> |
-<%= link_to_unless_current 'Members', project_users_path(project) %> |
+<li class ="stories"><%= link_to_unless_current 'Stories', project_path(project) %>
+  <span><ul><%= link_to_unless_current 'Done', '' %></ul>
+<ul><%= link_to_unless_current 'In Progress', '' %></ul>
+<ul><%= link_to_unless_current 'Backlog', '' %></ul>
+<ul><%= link_to_unless_current 'Chilly Bin', '' %></ul></span>
+</li>
+<span id ="members">|<%= link_to_unless_current 'Members', project_users_path(project) %></span> |
 <%= link_to_unless_current 'Edit', edit_project_path(project) %> |
 <%= link_to_unless_current 'Export CSV', export_project_stories_path(project, :format => "csv") %> |
 <%= link_to_unless_current 'Import CSV', import_project_stories_path(project) %>
