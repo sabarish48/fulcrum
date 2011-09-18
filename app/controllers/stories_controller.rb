@@ -144,6 +144,21 @@ class StoriesController < ApplicationController
 
   end
 
+  # Export Project stories as CSV
+  def export
+    @project = current_user.projects.find(params[:project_id])
+    stories = FasterCSV.generate do |csv|
+      csv << ['Id','Story','Labels','Iteration','Iteration Start','Iteration End','Story Type','Estimate','Current State','Created at','Accepted at','Deadline','Requested By','Owned By','Description','URL','Note']
+      @project.stories.each do |story|
+        requested_by = User.find(story.requested_by_id).present? ? User.find(story.requested_by_id).name: '-'
+        owned_by = User.find(story.owned_by_id).present? ? User.find(story.owned_by_id).name : '-'
+        csv << [story.id, story.title, '', '', '', '', story.story_type, story.estimate, story.state, story.created_at, story.accepted_at, '', requested_by, owned_by, story.description, '', '']
+      end
+    end
+
+    send_data(stories, :type => 'text/csv', :filename => "export.csv")
+  end
+  
   private
   def state_change(transition)
     @project = current_user.projects.find(params[:project_id])
