@@ -58,6 +58,9 @@ class StoriesController < ApplicationController
     @story.requested_by_id = current_user.id unless @story.requested_by_id
     respond_to do |format|
       if @story.save
+        @task = @story.tasks.build(:description => params[:tasks])
+        @comment = @story.comments.build(:description => params[:comments])
+        @task.save && @comment.save
         format.html { redirect_to project_url(@project) }
         format.js   { render :json => @story }
       else

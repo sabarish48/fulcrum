@@ -270,6 +270,20 @@ var StoryView = FormView.extend({
       $(div).append(this.textArea("description"));
       $(this.el).append(div);
 
+      div = this.make('div');
+      $(div).append(this.label("tasks", "Tasks"));
+      $(div).append('<br/>');
+      $(div).append(this.textField("tasks"));
+      $(this.el).append(div);
+
+      if (!this.model.isNew()) {
+        div = this.make('div');
+        $(div).append(this.label("comments", "Comments"));
+        $(div).append('<br/>');
+        $(div).append(this.textArea("comments"));
+        $(this.el).append(div);
+      }
+
     } else {
       $(this.el).html($('#story_tmpl').tmpl(this.model.toJSON(), {story: this.model, view: this}));
     }

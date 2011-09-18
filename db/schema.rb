@@ -10,11 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110706094137) do
+ActiveRecord::Schema.define(:version => 20110918134949) do
 
   create_table "changesets", :force => true do |t|
     t.integer  "story_id"
     t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.text     "description"
+    t.integer  "story_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -38,15 +45,23 @@ ActiveRecord::Schema.define(:version => 20110706094137) do
     t.string   "title"
     t.text     "description"
     t.integer  "estimate"
-    t.string   "story_type",      :default => "feature"
-    t.string   "state",           :default => "unstarted"
+    t.string   "story_type",                                     :default => "feature"
+    t.string   "state",                                          :default => "unstarted"
     t.date     "accepted_at"
     t.integer  "requested_by_id"
     t.integer  "owned_by_id"
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "position"
+    t.decimal  "position",        :precision => 10, :scale => 0
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.string   "description"
+    t.string   "status",      :default => "not completed"
+    t.integer  "story_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
