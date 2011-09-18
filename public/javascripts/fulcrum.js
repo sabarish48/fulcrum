@@ -1,9 +1,10 @@
 $(function() {
   $('#add_story').click(function() {
+    if($('#chilly_bin div.story.feature.unestimated').length == 0){
     window.Project.stories.add([{
       title: "New story", events: [], editing: true
     }]);
-
+    }
     var newStoryElement = $('#chilly_bin div.story:last');
     $('#chilly_bin').scrollTo(newStoryElement, 100);
   });
