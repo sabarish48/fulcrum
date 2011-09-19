@@ -188,11 +188,15 @@ div.storycolumn {
   padding-bottom: 80px;
 }
 
+table.stories td div.iteration{  
+  border-bottom: 1px solid #FFFFFF;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 /* Story columns headers */
 table.stories th {
-  background: $darkgrey;
-  @include background(linear-gradient(top, $darkgrey, $darkgrey*0.75));
-  color: #eee;
+  background-color: #ABA8A7;
+  color: #000000;
   padding: 0.2em;
   font-weight: bold;
   @include border-radius(5px 5px 0 0);
@@ -200,6 +204,11 @@ table.stories th {
 
 table.stories th span{
   float: right;
+  margin-right: 5px;
+}
+
+table.stories th span a{
+  text-decoration: none;
 }
 
 /* Story types */

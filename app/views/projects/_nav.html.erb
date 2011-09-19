@@ -1,10 +1,10 @@
 <h1><%= project.name %></h1>
 
 <li class ="stories"><%= link_to_unless_current 'Stories', project_path(project) %>
-  <span><ul><%= link_to_unless_current 'Done', '' %></ul>
-<ul><%= link_to_unless_current 'In Progress', '' %></ul>
-<ul><%= link_to_unless_current 'Backlog', '' %></ul>
-<ul><%= link_to_unless_current 'Chilly Bin', '' %></ul></span>
+  <span><ul><%= link_to_unless_current 'Done', '', :onclick => "TogglePane.toggleStatus('done');" %></ul>
+<ul><%= link_to_unless_current 'In Progress', '', :onclick => "TogglePane.toggleStatus('in_progress');" %></ul>
+<ul><%= link_to_unless_current 'Backlog', '', :onclick => "TogglePane.toggleStatus('backlog');" %></ul>
+<ul><%= link_to_unless_current 'Chilly Bin', '', :onclick => "TogglePane.toggleStatus('chilly_bin');" %></ul></span>
 </li>
 <span id ="members">|<%= link_to_unless_current 'Members', project_users_path(project) %></span> |
 <%= link_to_unless_current 'Edit', edit_project_path(project) %> |

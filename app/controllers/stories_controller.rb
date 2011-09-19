@@ -150,7 +150,7 @@ class StoriesController < ApplicationController
   # Export Project stories as CSV
   def export
     @project = current_user.projects.find(params[:project_id])
-    stories = FasterCSV.generate do |csv|
+    stories = CSV.generate do |csv|
       csv << ['Id','Story','Labels','Iteration','Iteration Start','Iteration End','Story Type','Estimate','Current State','Created at','Accepted at','Deadline','Requested By','Owned By','Description','URL','Note']
       @project.stories.each do |story|
         requested_by = User.find(story.requested_by_id).present? ? User.find(story.requested_by_id).name: '-'
